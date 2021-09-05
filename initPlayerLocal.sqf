@@ -1,0 +1,1 @@
+[] execVM "core\init.sqf";

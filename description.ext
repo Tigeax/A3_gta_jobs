@@ -1,0 +1,13 @@
+respawn = "BASE";
+disabledAI = 1;
+
+#include "dialog\MasterHandler.hpp"
+#include "config\Config_Master.hpp"
+
+class cfgFunctions {
+	#include "Functions.hpp"
+};
+
+class RscTitles {
+    #include "dialog\progress.hpp"
+};
