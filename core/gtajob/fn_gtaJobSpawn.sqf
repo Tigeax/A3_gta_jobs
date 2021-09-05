@@ -62,12 +62,12 @@ _veh setVariable ['gtaJobDropoffMarker', _dropoffMarker, true];
 
 
 // Add unlock action to the vehicle
-_veh addAction ["Lockpick", "_this call life_fnc_gtaJobLockpickAction", nil, 5, true, true, "", "_this == _originalTarget getVariable 'gtaJobOwner'", 3];
+_veh addAction ["Lockpick", "_this call life_fnc_gtaJobLockpickAction", nil, 5, true, true, "", "", 3];
 
 
 _vehName = getText (configFile >> "CfgVehicles" >> typeOf _veh >> "displayName");
-_vehNearLoc = text nearestLocation [getPos _veh, ""];
-_dropoffNearLoc = text nearestLocation [getMarkerPos _dropoffMarker, ""];
+_vehNearLoc = text nearestLocation [getPos _veh, "nameCity"];
+_dropoffNearLoc = text nearestLocation [getMarkerPos _dropoffMarker, "nameCity"];
 
 // Create vehicle map marker for player
 deleteMarkerLocal "gtaJobMarker";

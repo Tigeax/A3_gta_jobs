@@ -20,5 +20,5 @@ hint "This car is equipped with a tracker! Remove it before dropping it off";
 _engineEventHandlerId = _veh getVariable "gtaJobEngineEventHandlerId";
 _veh removeEventHandler ["Engine", _engineEventHandlerId];
 
-// Add action to remove the tracker (action only shows then player is not in a vehicle or in the passanger seat of a vehicle)
-_veh addAction ["Remove tracker", "_this call life_fnc_gtaJobRemoveTrackerAction", nil, 5, true, true, "", "vehicle _this == _this or ((assignedVehicleRole _this) select 0) == 'cargo'", 5];
+// Add action to remove the tracker for all players (action only shows then player is not the driver of the vehicle)
+[_veh] remoteExec ['life_fnc_gtaJobRemoveTrackerActionAdd'];

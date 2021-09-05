@@ -11,7 +11,7 @@ _display = findDisplay _displayId; // Get the display
 
 
 // Calc cooldown
-_timeMinSinceLastMission = profileNamespace getVariable 'gtaJobTimeSinceLastMission';
+_timeMinSinceLastMission = player getVariable 'gtaJobTimeSinceLastMission';
 _cooldown = 0;
 
 if (!(isNil '_timeMinSinceLastMission')) then {
@@ -21,7 +21,6 @@ if (!(isNil '_timeMinSinceLastMission')) then {
 	if (_cooldown < 0) then {
 		_cooldown = 0;
 	};
-
 };
 
 

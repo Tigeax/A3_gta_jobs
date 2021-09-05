@@ -1,5 +1,3 @@
-#include "..\..\script_macros.hpp"
-
 params ["_veh", "_caller", "_actionId", "_arguments"];
 
 _dropoffMarker = _veh getVariable 'gtaJobDropoffMarker';
@@ -57,7 +55,7 @@ if (_interrupted) exitWith {
 	titleText ["Action cancelled", "PLAIN"];
 
 	// Add back dropoff action
-	_veh addAction ["Dropoff vehicle", "_this call life_fnc_gtaJobDropoffAction", nil, 5, true, true, "", "_this == _originalTarget getVariable 'gtaJobOwner'", 3];
+	_veh addAction ["Dropoff vehicle", "_this call life_fnc_gtaJobDropoffAction", nil, 5, true, true, "", "", 3];
 };
 
 titleText ["Dropped off vehicle", "PLAIN"];

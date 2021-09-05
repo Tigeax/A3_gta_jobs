@@ -2,7 +2,7 @@
 class Life_Client_Core {
     tag = "life";
 
-	class GTAJob {
+    class GTAJob {
         file = "core\gtajob";
         class gtaJobSpawn {};
 		class gtaJobLockpickAction {};
@@ -11,6 +11,9 @@ class Life_Client_Core {
 		class gtaJobCreateStolenCarMarker {};
 		class gtaJobCreateTrackerMarker {};
 		class gtaJobDropoffAction {};
+        class gtaJobRemoveTrackerActionAdd {};
+        class gtaJobRemoveTrackerActionRemove {};
+        class gtaJobDropoffVehicleActionAdd {};
 	};
 
 	class Events {
@@ -22,6 +25,11 @@ class Life_Client_Core {
         file = "dialog\function";
         class gtaJobDialog {};
 		class gtaJobStart {};
+    };
+
+	class Network {
+        file = "core\functions\network";
+        class say3D {};
     };
 
 };

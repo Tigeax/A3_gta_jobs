@@ -34,7 +34,7 @@ if (_carAlarm) then {
 		params ["_veh"];
 
 		for "_i" from 0 to 1 step 0 do {
-			_veh say3D "Orange_Car_Alarm_Loop_01";
+			[_veh, 'Orange_Car_Alarm_Loop_01', 100, 1] remoteExec ["life_fnc_say3D", 0];
 			sleep 2.25;
 
 			if (!(_veh getVariable 'gtaJobCarAlarmPlay')) exitWith {}
@@ -91,7 +91,7 @@ if (life_interrupted) exitWith {
 	life_interrupted = false;
 	titleText ["Action cancelled", "PLAIN"];
 	// Add back the unlock action to the vehicle
-	_veh addAction ["Lockpick", "_this call life_fnc_gtaJobLockpickAction", nil, 5, true, true, "", "_this == _originalTarget getVariable 'gtaJobOwner'", 3];
+	_veh addAction ["Lockpick", "_this call life_fnc_gtaJobLockpickAction", nil, 5, true, true, "", "", 3];
 };
 
 titleText ["Vehicle lockpicked", "PLAIN"];
@@ -106,5 +106,5 @@ if (_carTracker) then {
 	_veh setVariable ['gtaJobRemoveTrackerProgress', 0, true];
 } else {
 	// Add dropoff action
-	_veh addAction ["Dropoff vehicle", "_this call life_fnc_gtaJobDropoffAction", nil, 5, true, true, "", "_this == _originalTarget getVariable 'gtaJobOwner'", 3];
+	_veh addAction ["Dropoff vehicle", "_this call life_fnc_gtaJobDropoffAction", nil, 5, true, true, "", "", 3];
 }

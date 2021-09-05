@@ -1,7 +1,7 @@
 params ["_veh", "_caller", "_actionId", "_arguments"];
 
 // Remove the tracker action so it can't be activiated again
-_veh removeAction _actionId;
+[_veh] remoteExec ['life_fnc_gtaJobRemoveTrackerActionRemove'];
 
 life_interrupted = false;
 life_action_inUse = true;
@@ -52,8 +52,9 @@ if (life_interrupted) exitWith {
 	titleText ["Stopped removing tracker", "PLAIN"];
 	life_interrupted = false;
 
-	// Add back the action to remove the tracker (action only shows then player is not in a vehicle or in the passanger seat of a vehicle)
-	_veh addAction ["Remove tracker", "_this call life_fnc_gtaJobRemoveTrackerAction", nil, 5, true, true, "", "vehicle _this == _this or ((assignedVehicleRole _this) select 0) == 'cargo'", 5];
+	// Add action to remove the tracker for all players (action only shows then player is not the driver of the vehicle)
+	[_veh] remoteExec ['life_fnc_gtaJobRemoveTrackerActionAdd'];
+
 };
 
 titleText ["Tracker removed", "PLAIN"];
@@ -62,6 +63,7 @@ titleText ["Tracker removed", "PLAIN"];
 _veh setVariable ['gtaJobTracker', false, true];
 
 // Add dropoff action
-_veh addAction ["Dropoff vehicle", "_this call life_fnc_gtaJobDropoffAction", nil, 5, true, true, "", "_this == _originalTarget getVariable 'gtaJobOwner'", 3];
+_gtaJobOwner = _veh getVariable 'gtaJobOwner';
+[_veh] remoteExec ['life_fnc_gtaJobDropoffVehicleActionAdd', _gtaJobOwner];
 
 

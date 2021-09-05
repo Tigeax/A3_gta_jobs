@@ -1,4 +1,3 @@
-#include "..\..\script_macros.hpp"
 
 params ["_difficulty"];
 
@@ -19,7 +18,7 @@ CASH = CASH - _cost;
 [0] call SOCK_fnc_updatePartial;
 
 // Set cooldown time
-profileNamespace setVariable ['gtaJobTimeSinceLastMission', floor (time / 60)];
+player setVariable ['gtaJobTimeSinceLastMission', floor (time / 60), false];
 
 // Start gta job
 [_vehicleClass, _reward, _expReward, _carAlarmChance, _trackerChance] spawn life_fnc_gtaJobSpawn;
